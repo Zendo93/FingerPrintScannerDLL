@@ -1,7 +1,7 @@
 #include "fingerprintscanner.h"
 #include <QString>
 #include <QByteArray>
-#include <QtWidgets/QFileDialog>
+#include <QFileDialog>
 #include "FingerPrintScanner/fxISOdll.h"
 #include "FingerPrintScanner/fxISOenrdlg.h"
 #include "stdio.h"

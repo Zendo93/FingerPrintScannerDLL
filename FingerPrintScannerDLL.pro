@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT += widgets
 
 TARGET = FingerPrintScannerDLL
 TEMPLATE = lib
