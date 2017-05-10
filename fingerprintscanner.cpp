@@ -56,11 +56,18 @@ int FingerPrintScanner::saveCapturedFinger(char *path)
 }
 
 int FingerPrintScanner::saveCapturedFingerIntoBuffer(){
-    cout << gImage.sizeUsed << endl;
-    FxISO_Fing_SaveToMemory(&gImage,NATIVE_RESOLUTION,NULL);
+    err = FxISO_Fing_SaveToMemory(&gImage,NATIVE_RESOLUTION,NULL);
     cout << "FxBuffer size: " << gImage.sizeUsed << endl;
-    buffer = (unsigned char *) malloc(gImage.sizeUsed*sizeof(unsigned char));
-    err = FxISO_Mem_CopyBufferToArray(&gImage,buffer,gImage.sizeUsed);
+    if (!err)
+    {
+        buffer = (unsigned char *) malloc(gImage.sizeUsed*sizeof(unsigned char));
+        err = FxISO_Mem_CopyBufferToArray(&gImage,buffer,gImage.sizeUsed);
+    }
+    else
+    {
+        buffer = NULL;
+        err = 1;
+    }
     return err;
 }
 
